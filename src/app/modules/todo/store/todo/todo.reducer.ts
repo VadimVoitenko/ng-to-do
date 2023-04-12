@@ -40,12 +40,13 @@ export const todoReducer = (state = initialState, action: TodoActions) => {
     case todoActionsType.edit:
       return {
         ...state,
-        todoList: state.todoList.map(
-          todo => todo.id === action.payload.id ? 
-          {
-            ...todo,
-            name: action.payload.name
-          } : todo
+        todoList: state.todoList.map((todo) =>
+          todo.id === action.payload.id
+            ? {
+                ...todo,
+                name: action.payload.name,
+              }
+            : todo
         ),
       };
     case todoActionsType.delete:
@@ -54,6 +55,10 @@ export const todoReducer = (state = initialState, action: TodoActions) => {
         todoList: state.todoList.filter(
           (todo) => todo.id !== action.payload.id
         ),
+      };
+    case todoActionsType.load:
+      return {
+        ...action.payload.state,
       };
 
     default:
