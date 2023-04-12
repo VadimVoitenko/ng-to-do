@@ -1,0 +1,13 @@
+<label>
+  <input
+    type="checkbox"
+    [checked]="todo.completed"
+    (click)="onToggle($event)"
+  />
+  <del *ngIf="todo.completed"
+    ><span>{{ todo.name }}</span></del
+  >
+  <span *ngIf="!todo.completed">{{ todo.name }}</span>
+</label>
+<span (click)="onEdit()">Edit</span>
+<span (click)="onDelete()">Delete</span>
